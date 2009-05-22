@@ -1,0 +1,16 @@
+---
+abstract: MooseX::Types provided for the modern POE
+author:
+- Nicholas Perez <nperez@cpan.org>
+generated_by: Dist::Zilla::Plugin::MetaYaml version 1.091260
+license: gpl
+name: POEx-Types
+requires:
+  MooseX::Declare: '0.22'
+  MooseX::Types: '0.10'
+  MooseX::Types::Structured: '0.14'
+  POE: '1.005'
+  perl: 5.10.0
+resources:
+  repository: git://github.com/nperez/pxt.git
+version: '0.091420'
