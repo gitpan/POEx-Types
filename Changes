@@ -1,4 +1,8 @@
-Revision history for 43449696: 0.091420
+Revision history for POEx-Types: 0.092430
+
+0.092430  2009-08-31 08:56:48 UTC
+        Adjust dist.ini to not set a minimum perl version
+        Add aggregate type to reduce typing
 
 0.091420  2009-05-22 04:17:43 UTC
         Initial release to abstract out some types defined in other projects

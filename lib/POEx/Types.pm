@@ -1,15 +1,26 @@
 package POEx::Types;
-our $VERSION = '0.091420';
+our $VERSION = '0.092430';
 
 use warnings;
 use strict;
-use 5.010;
 
 #ABSTRACT: Exported Types for use within POEx modules
 
 
 use POE;
-use MooseX::Types -declare => [ 'Driver', 'Filter', 'Wheel', 'WheelID', 'Kernel', 'SessionID', 'SessionAlias', 'Session', 'DoesSessionInstantiation' ];
+use MooseX::Types -declare => 
+[ 
+    'Driver', 
+    'Filter', 
+    'Wheel', 
+    'WheelID', 
+    'Kernel', 
+    'SessionID', 
+    'SessionAlias', 
+    'Session', 
+    'DoesSessionInstantiation',
+    'SessionRefIdAliasInstantiation'
+];
 use MooseX::Types::Moose('Int', 'Str');
 use MooseX::Types::Structured('Dict');
 
@@ -55,6 +66,10 @@ subtype DoesSessionInstantiation,
     where { $_->does('POEx::Role::SessionInstantiation') };
 
 
+subtype SessionRefIdAliasInstantiation,
+    as Session|SessionID|SessionAlias|DoesSessionInstantiation;
+
+
 subtype WheelID,
     as Int,
     where { $_ > 0 },
@@ -97,12 +112,14 @@ POEx::Types - Exported Types for use within POEx modules
 
 =head1 VERSION
 
-version 0.091420
+version 0.092430
 
 =head1 DESCRIPTION
 
 This modules exports the needed subtypes, and coercions for POEx modules
 and is based on Sub::Exporter, so see that module for options on importing.
+
+
 
 =head1 TYPES
 
@@ -110,39 +127,63 @@ and is based on Sub::Exporter, so see that module for options on importing.
 
 A subtype for POE::Kernel.
 
+
+
 =head2 Wheel
 
 A subtype for POE::Wheel.
+
+
 
 =head2 Filter
 
 A subtype for POE::Filter.
 
+
+
 =head2 Driver
 
 A subtype for POE::Driver.
 
+
+
 =head2 Session
 
 This sets an isa constraint on POE::Session
+
+
 
 =head2 SessionID
 
 Session IDs in POE are represented as positive integers and this Type 
 constrains as such
 
+
+
 =head2 SessionAlias
 
 Session aliases are strings in and this is simply an alias for Str
+
+
 
 =head2 DoesSessionInstantiation
 
 This sets a constraint for an object that does
 POEx::Role::SessionInstantiation
 
+
+
+=head2 SessionRefIdAliasInstantiation
+
+This is a convience type that checks for the above types in one go.
+
+
+
 =head2 WheelID
 
 WheelIDs are represented as positive integers
+
+
 
 =head1 COERCIONS
 
@@ -150,6 +191,8 @@ WheelIDs are represented as positive integers
 
 You can coerce SessionAlias, Session, and DoesSessionInstantiation to a 
 SessionID (via to_SessionID)
+
+
 
 =head1 AUTHOR
 
