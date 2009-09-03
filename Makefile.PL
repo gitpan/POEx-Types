@@ -9,15 +9,15 @@ WriteMakefile(
   NAME      => 'POEx::Types',
   AUTHOR    => 'Nicholas\ Perez\ \<nperez\@cpan\.org\>',
   ABSTRACT  => 'MooseX\:\:Types\ provided\ for\ the\ modern\ POE',
-  VERSION   => '0.092430',
+  VERSION   => '0.092460',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'gpl') : ()),
   PREREQ_PM    => {
     "Test::More" => '0.92',
-    "MooseX::Declare" => '0.27',
+    "MooseX::Declare" => '0.29',
     "Test::Exception" => '0.27',
     "MooseX::Types" => '0.19',
     "MooseX::Types::Structured" => '0.18',
-    "POE" => '1.007',
+    "POE" => '1.266',
   },
 );

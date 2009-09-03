@@ -14,11 +14,11 @@ my $build = Module::Build->new(
   ],
   requires      => {
     "Test::More" => '0.92',
-    "MooseX::Declare" => '0.27',
+    "MooseX::Declare" => '0.29',
     "Test::Exception" => '0.27',
     "MooseX::Types" => '0.19',
     "MooseX::Types::Structured" => '0.18',
-    "POE" => '1.007',
+    "POE" => '1.266',
   },
   script_files => [ qw() ],
 );

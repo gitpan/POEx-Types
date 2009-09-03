@@ -9,12 +9,12 @@ meta-spec:
   version: 1.4
 name: POEx-Types
 requires:
-  MooseX::Declare: 0.27
+  MooseX::Declare: 0.29
   MooseX::Types: 0.19
   MooseX::Types::Structured: 0.18
-  POE: 1.007
+  POE: 1.266
   Test::Exception: 0.27
   Test::More: 0.92
 resources:
   repository: git://github.com/nperez/pxt.git
-version: 0.092430
+version: 0.092460
