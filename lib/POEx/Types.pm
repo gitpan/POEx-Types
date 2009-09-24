@@ -1,5 +1,5 @@
 package POEx::Types;
-our $VERSION = '0.092460';
+our $VERSION = '0.092670';
 
 use warnings;
 use strict;
@@ -84,7 +84,6 @@ coerce SessionID,
     from DoesSessionInstantiation,
         via { $_->ID };
 
-
 coerce SessionAlias,
     from SessionID,
         via { ($poe_kernel->alias_list($_))[0]; },
@@ -92,7 +91,7 @@ coerce SessionAlias,
         via { ($poe_kernel->alias_list($_))[0]; },
     from DoesSessionInstantiation,
         via { $_->alias; };
-
+        
 
 coerce Session,
     from SessionID,
@@ -113,7 +112,7 @@ POEx::Types - Exported Types for use within POEx modules
 
 =head1 VERSION
 
-version 0.092460
+version 0.092670
 
 =head1 DESCRIPTION
 
@@ -188,26 +187,10 @@ WheelIDs are represented as positive integers
 
 =head1 COERCIONS
 
-Most of these coercions require an active POE::Kernel and so their use is only
-recommened inside a proper POE context
-
 =head2 SessionID
 
 You can coerce SessionAlias, Session, and DoesSessionInstantiation to a 
 SessionID (via to_SessionID)
-
-
-
-=head2 SessionAlias
-
-You can coerce Session, SessionID, and DoesSessionInstantiation to a 
-SessionAlias (via to_SessionAlias)
-
-
-
-=head2 Session
-
-You can coerce SessionAlias and SessionID to a SessionID (via to_Session)
 
 
 

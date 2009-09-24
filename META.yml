@@ -2,19 +2,18 @@
 abstract: 'MooseX::Types provided for the modern POE'
 author:
   - 'Nicholas Perez <nperez@cpan.org>'
-generated_by: 'Dist::Zilla::Plugin::MetaYAML version 1.092400'
+generated_by: 'Dist::Zilla::Plugin::MetaYAML version 1.092450'
 license: gpl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: POEx-Types
 requires:
-  MooseX::Declare: 0.29
-  MooseX::Types: 0.19
+  MooseX::Types: 0.20
   MooseX::Types::Structured: 0.18
-  POE: 1.266
+  POE: 1.269
   Test::Exception: 0.27
-  Test::More: 0.92
+  Test::More: 0.94
 resources:
   repository: git://github.com/nperez/pxt.git
-version: 0.092460
+version: 0.092670
