@@ -1,6 +1,5 @@
 package POEx::Types;
-our $VERSION = '0.092670';
-
+$POEx::Types::VERSION = '1.100910';
 use warnings;
 use strict;
 
@@ -76,6 +75,7 @@ subtype WheelID,
     message { 'Something is horribly wrong with WheelID.' };
 
 
+
 coerce SessionID,
     from SessionAlias,
         via { $poe_kernel->alias_resolve($_)->ID },
@@ -84,6 +84,7 @@ coerce SessionID,
     from DoesSessionInstantiation,
         via { $_->ID };
 
+
 coerce SessionAlias,
     from SessionID,
         via { ($poe_kernel->alias_list($_))[0]; },
@@ -91,7 +92,7 @@ coerce SessionAlias,
         via { ($poe_kernel->alias_list($_))[0]; },
     from DoesSessionInstantiation,
         via { $_->alias; };
-        
+
 
 coerce Session,
     from SessionID,
@@ -103,7 +104,6 @@ coerce Session,
 
 
 
-
 =pod
 
 =head1 NAME
@@ -112,14 +112,12 @@ POEx::Types - Exported Types for use within POEx modules
 
 =head1 VERSION
 
-version 0.092670
+version 1.100910
 
 =head1 DESCRIPTION
 
 This modules exports the needed subtypes, and coercions for POEx modules
 and is based on Sub::Exporter, so see that module for options on importing.
-
-
 
 =head1 TYPES
 
@@ -127,63 +125,43 @@ and is based on Sub::Exporter, so see that module for options on importing.
 
 A subtype for POE::Kernel.
 
-
-
 =head2 Wheel
 
 A subtype for POE::Wheel.
-
-
 
 =head2 Filter
 
 A subtype for POE::Filter.
 
-
-
 =head2 Driver
 
 A subtype for POE::Driver.
 
-
-
 =head2 Session
 
 This sets an isa constraint on POE::Session
-
-
 
 =head2 SessionID
 
 Session IDs in POE are represented as positive integers and this Type 
 constrains as such
 
-
-
 =head2 SessionAlias
 
 Session aliases are strings in and this is simply an alias for Str
-
-
 
 =head2 DoesSessionInstantiation
 
 This sets a constraint for an object that does
 POEx::Role::SessionInstantiation
 
-
-
 =head2 SessionRefIdAliasInstantiation
 
 This is a convience type that checks for the above types in one go.
 
-
-
 =head2 WheelID
 
 WheelIDs are represented as positive integers
-
-
 
 =head1 COERCIONS
 
@@ -192,7 +170,14 @@ WheelIDs are represented as positive integers
 You can coerce SessionAlias, Session, and DoesSessionInstantiation to a 
 SessionID (via to_SessionID)
 
+=head2 SessionAlias
 
+You can also coerce a SessionAlias from a SessionID, Session, or DoesSessionInstantiation
+(via to_SessionAlias)
+
+=head2 Session
+
+And finally a Session can be coerced from a SessionID, or SessionAlias (via to_Session)
 
 =head1 AUTHOR
 
@@ -200,14 +185,12 @@ SessionID (via to_SessionID)
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2009 by Nicholas Perez.
+This software is copyright (c) 2010 by Nicholas Perez.
 
-This is free software, licensed under:
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-  The GNU General Public License, Version 3, June 2007
-
-=cut 
-
+=cut
 
 
 __END__
